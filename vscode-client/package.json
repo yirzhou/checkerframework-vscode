@@ -1,0 +1,83 @@
+{
+	"name": "checker-framework",
+	"displayName": "Checker Framework",
+	"description": "Checker Framework Extension for VS Code",
+	"version": "0.1.0",
+	"icon": "images/icon.png",
+	"publisher": "adamyy",
+	"license": "MIT",
+	"homepage": "https://github.com/adamyy/checkerframework-lsp/blob/master/vscode-client/README.md",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/adamyy/checkerframework-lsp"
+	},
+	"bugs": "https://github.com/adamyy/checkerframework-lsp/issues",
+	"engines": {
+		"node": "*",
+		"vscode": "^1.18.x"
+	},
+	"galleryBanner": {
+		"color": "#da2f30",
+		"theme": "dark"
+	},
+	"keywords": [
+		"java",
+		"type",
+		"checker",
+		"javac"
+	],
+	"categories": [
+		"Linters"
+	],
+	"activationEvents": [
+		"onLanguage:java"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"configuration": {
+			"type": "object",
+			"title": "Checker Framework configuration",
+			"properties": {
+				"checker-framework.checkers": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [
+						"org.checkerframework.checker.nullness.NullnessChecker"
+					],
+					"description": "List of checkers enabled for compilation. More details in: https://checkerframework.org/manual/#running"
+				},
+				"checker-framework.frameworkPath": {
+					"type": "string",
+					"default": "",
+					"description": "Absolute path of the Checker Framework."
+				},
+				"checker-framework.commandLineOptions": {
+					"type": "array",
+					"items": {
+						"type": "string"
+					},
+					"default": [],
+					"description": "List of command line options that gets passed in to javac. See available options in: https://checkerframework.org/manual/#running"
+				}
+			}
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"compile": "tsc -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"typescript": "^2.8.3",
+		"mocha": "^3.5.0",
+		"@types/node": "^8.0.26",
+		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"vscode": "^1.1.12",
+		"vscode-languageclient": "^4.0.0"
+	}
+}
